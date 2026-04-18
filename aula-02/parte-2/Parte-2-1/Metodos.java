@@ -1,6 +1,6 @@
 // Parte 2.1 - Métodos parametrizados na mesma classe
 void main() {
-    saudacao("Maria");
+    saudacao("Ryan");
     exibirSeparador();
 
     int resultadoSoma = somar(8, 5);
