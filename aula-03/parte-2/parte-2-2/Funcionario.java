@@ -9,7 +9,7 @@ public class Funcionario {
 
     public void setNome(String nome) {
         if (nome == null || nome.isBlank()) {
-            System.out.println("Erro: nome não pode ser vazio.");
+            IO.println("Erro: nome não pode ser vazio.");
             return;
         }
         this.nome = nome;
@@ -21,7 +21,7 @@ public class Funcionario {
 
     public void setSalario(double salario) {
         if (salario < 0) {
-            System.out.println("Erro: salário não pode ser negativo.");
+            IO.println("Erro: salário não pode ser negativo.");
             return;
         }
         this.salario = salario;
@@ -33,7 +33,7 @@ public class Funcionario {
 
     public void setIdade(int idade) {
         if (idade < 16 || idade > 100) {
-            System.out.println("Erro: idade inválida (" + idade + ").");
+            IO.println("Erro: idade inválida (" + idade + ").");
             return;
         }
         this.idade = idade;
@@ -41,14 +41,14 @@ public class Funcionario {
 
     public void aplicarAumento(double percentual) {
         if (percentual <= 0) {
-            System.out.println("Percentual de aumento deve ser positivo.");
+            IO.println("Percentual de aumento deve ser positivo.");
             return;
         }
         salario = salario + (salario * percentual / 100);
-        System.out.println(nome + " recebeu aumento de " + percentual + "%. Novo salário: R$" + salario);
+        IO.println(nome + " recebeu aumento de " + percentual + "%. Novo salário: R$" + salario);
     }
 
     public void exibir() {
-        System.out.println("Funcionário: " + nome + " | Idade: " + idade + " | Salário: R$" + salario);
+        IO.println("Funcionário: " + nome + " | Idade: " + idade + " | Salário: R$" + salario);
     }
 }

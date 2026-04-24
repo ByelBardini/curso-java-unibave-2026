@@ -1,21 +1,21 @@
-public class Main {
+void Main {
 
     // Recebe uma conta e um valor, chama o método depositar do objeto
     static void processarDeposito(ContaBancaria conta, double valor) {
-        System.out.println("Processando depósito para: " + conta.titular);
+        IO.println("Processando depósito para: " + conta.titular);
         conta.depositar(valor);
     }
 
     // Recebe duas contas e transfere valor de uma para outra
     static void transferir(ContaBancaria origem, ContaBancaria destino, double valor) {
-        System.out.println("\nTransferindo R$" + valor + " de " + origem.titular + " para " + destino.titular);
+        IO.println("\nTransferindo R$" + valor + " de " + origem.titular + " para " + destino.titular);
         origem.sacar(valor);
         destino.depositar(valor);
     }
 
     // Recebe um array de contas e exibe o saldo de todas
     static void exibirResumo(ContaBancaria[] contas) {
-        System.out.println("\n=== Resumo das contas ===");
+        IO.println("\n=== Resumo das contas ===");
         for (ContaBancaria c : contas) {
             c.exibirSaldo();
         }
@@ -30,11 +30,11 @@ public class Main {
         contaCarlos.titular = "Carlos";
         contaCarlos.saldo = 500.0;
 
-        System.out.println("=== Depósitos ===");
+        IO.println("=== Depósitos ===");
         processarDeposito(contaAna, 200.0);
         processarDeposito(contaCarlos, 300.0);
 
-        System.out.println("\n=== Saques ===");
+        IO.println("\n=== Saques ===");
         contaAna.sacar(100.0);
         contaCarlos.sacar(900.0); // saldo insuficiente
 

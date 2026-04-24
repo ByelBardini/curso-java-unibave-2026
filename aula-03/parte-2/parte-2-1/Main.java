@@ -1,4 +1,4 @@
-public class Main {
+void Main {
     public static void main(String[] args) {
         Produto p = new Produto();
 
@@ -7,11 +7,11 @@ public class Main {
         p.setPreco(3500.00);
 
         // Usando getters para ler os valores
-        System.out.println("Produto: " + p.getNome());
-        System.out.println("Preço: R$" + p.getPreco());
+        IO.println("Produto: " + p.getNome());
+        IO.println("Preço: R$" + p.getPreco());
 
         // Alterando com setter
         p.setPreco(2999.90);
-        System.out.println("Novo preço: R$" + p.getPreco());
+        IO.println("Novo preço: R$" + p.getPreco());
     }
 }
