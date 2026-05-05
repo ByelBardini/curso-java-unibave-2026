@@ -59,3 +59,24 @@ Introdução à programação orientada a objetos: criação de classes, objetos
 - Passagem de objetos por referência e primitivos por valor
 - Getters e setters
 - Encapsulamento e validação de dados nos setters
+
+### Aula 04 — Herança e Interfaces
+
+Aprofundamento em orientação a objetos: herança entre classes, sobrescrita de métodos e contratos com interfaces.
+
+**Parte 1 — Classes e construtores**
+- [parte-1/Pessoa.java](aula-04/parte-1/Pessoa.java) + [Main.java](aula-04/parte-1/Main.java) — criação de objetos com construtor e método de apresentação
+
+**Parte 2 — Herança**
+- [parte-2/parte-2-1/](aula-04/parte-2/parte-2-1/) — herança com métodos específicos nas subclasses (`Cachorro` com `latir()`, `Gato` com `miar()`)
+- [parte-2/parte-2-2/](aula-04/parte-2/parte-2-2/) — sobrescrita de métodos com `@Override` (`emitirSom()` redefinido em cada subclasse)
+
+**Parte 3 — Interfaces**
+- [parte-3/](aula-04/parte-3/) — interfaces `Nadavel` e `Voavel`; `Pato` implementa ambas, `Peixe` implementa apenas `Nadavel`
+
+**Conceitos abordados:**
+- Herança com `extends` e `super()`
+- Métodos específicos de subclasses
+- Sobrescrita de métodos (`@Override`)
+- Declaração e implementação de interfaces (`interface` / `implements`)
+- Múltiplas interfaces em uma mesma classe
