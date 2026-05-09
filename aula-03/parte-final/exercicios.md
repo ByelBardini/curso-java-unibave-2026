@@ -6,12 +6,12 @@
 
 ### Exercício 1
 Crie uma classe `Livro` com os campos públicos `titulo`, `autor` e `numeroDePaginas`.  
-No `Main`, crie dois livros, atribua valores diretamente e exiba as informações de cada um.
+No `Principal`, crie dois livros, atribua valores diretamente e exiba as informações de cada um.
 
 ---
 
 ### Exercício 2
-Crie um método estático `exibirLivro(Livro l)` no `Main` que receba um objeto `Livro` e imprima seus dados.  
+Crie um método estático `exibirLivro(Livro l)` no `Principal` que receba um objeto `Livro` e imprima seus dados.  
 Chame esse método para cada livro criado no exercício anterior.
 
 ---
@@ -31,7 +31,7 @@ Exiba o valor dentro do método e depois fora e explique por que o valor origina
 ### Exercício 5
 Crie uma classe `Turma` com os campos `nome` e `quantidadeDeAlunos`.  
 Crie um método estático `matricular(Turma t)` que incremente `quantidadeDeAlunos` em 1 e exiba uma mensagem.  
-No `Main`, matricule três alunos na mesma turma chamando o método três vezes.
+No `Principal`, matricule três alunos na mesma turma chamando o método três vezes.
 
 ---
 
@@ -40,7 +40,7 @@ No `Main`, matricule três alunos na mesma turma chamando o método três vezes.
 ### Exercício 6
 Crie uma classe `Carro` com os campos privados `modelo` e `ano`.  
 Adicione getters e setters para os dois campos.  
-No `Main`, crie um carro, defina os valores com setters e exiba-os com getters.
+No `Principal`, crie um carro, defina os valores com setters e exiba-os com getters.
 
 ---
 
@@ -53,7 +53,7 @@ Teste com um ano válido e um inválido e observe o comportamento.
 ### Exercício 8
 Crie uma classe `Aluno` com os campos privados `nome`, `nota1` e `nota2`.  
 Adicione getters e setters. O setter de cada nota deve bloquear valores fora do intervalo de 0 a 10.  
-Crie um método `calcularMedia()` que retorne a média das duas notas e exiba o resultado no `Main`.
+Crie um método `calcularMedia()` que retorne a média das duas notas e exiba o resultado no `Principal`.
 
 ---
 
@@ -61,7 +61,7 @@ Crie um método `calcularMedia()` que retorne a média das duas notas e exiba o 
 Crie uma classe `ContaCorrente` com os campos privados `titular` e `saldo`.  
 Adicione um método `depositar(double valor)` que bloqueie depósitos de valor zero ou negativo.  
 Adicione um método `sacar(double valor)` que bloqueie saques maiores que o saldo disponível.  
-No `Main`, teste depósitos e saques válidos e inválidos.
+No `Principal`, teste depósitos e saques válidos e inválidos.
 
 ---
 
@@ -73,4 +73,4 @@ Implemente:
 - Um método `reporEstoque(int quantidade)` que some ao estoque atual.
 - Um método `exibir()` que mostre todas as informações do produto.
 
-No `Main`, crie um produto, faça vendas e reposições, e tente inserir dados inválidos para verificar as validações.
+No `Principal`, crie um produto, faça vendas e reposições, e tente inserir dados inválidos para verificar as validações.

@@ -21,6 +21,6 @@ void exibirDataAtual() {
     IO.println("Data de hoje: " + hoje);
 }
 
-void exibirSeparador() {
+void exibirSeparador()_ {
     IO.println("--------------------------------------------------");
 }

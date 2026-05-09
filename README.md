@@ -46,12 +46,12 @@ Criação e chamada de métodos sem e com parâmetros, sobrecarga, e separação
 Introdução à programação orientada a objetos: criação de classes, objetos, passagem por referência e encapsulamento.
 
 **Parte 1 — Objetos e Métodos (sem get/set)**
-- [Parte-1-1/Pessoa.java](aula-03/parte-1/Parte-1-1/Pessoa.java) + [Main.java](aula-03/parte-1/Parte-1-1/Main.java) — passagem de objetos e primitivos para métodos; referência vs. valor
-- [Parte1-2/ContaBancaria.java](aula-03/parte-1/Parte1-2/ContaBancaria.java) + [Main.java](aula-03/parte-1/Parte1-2/Main.java) — métodos que recebem objetos e chamam comportamentos; transferência entre objetos
+- [Parte-1-1/Pessoa.java](aula-03/parte-1/Parte-1-1/Pessoa.java) + [Principal.java](aula-03/parte-1/Parte-1-1/Main.java) — passagem de objetos e primitivos para métodos; referência vs. valor
+- [Parte1-2/ContaBancaria.java](aula-03/parte-1/Parte1-2/ContaBancaria.java) + [Principal.java](aula-03/parte-1/Parte1-2/Main.java) — métodos que recebem objetos e chamam comportamentos; transferência entre objetos
 
 **Parte 2 — Encapsulamento com get/set**
-- [Parte-2-1/Produto.java](aula-03/Parte-2/Parte-2-1/Produto.java) + [Main.java](aula-03/Parte-2/Parte-2-1/Main.java) — campos `private` com getters e setters simples
-- [Parte-2-2/Funcionario.java](aula-03/Parte-2/Parte-2-2/Funcionario.java) + [Main.java](aula-03/Parte-2/Parte-2-2/Main.java) — setters com validação; proteção do estado do objeto
+- [Parte-2-1/Produto.java](aula-03/Parte-2/Parte-2-1/Produto.java) + [Principal.java](aula-03/Parte-2/Parte-2-1/Main.java) — campos `private` com getters e setters simples
+- [Parte-2-2/Funcionario.java](aula-03/Parte-2/Parte-2-2/Funcionario.java) + [Principal.java](aula-03/Parte-2/Parte-2-2/Main.java) — setters com validação; proteção do estado do objeto
 
 **Conceitos abordados:**
 - Classes e objetos
@@ -65,10 +65,10 @@ Introdução à programação orientada a objetos: criação de classes, objetos
 Aprofundamento em orientação a objetos: herança entre classes, sobrescrita de métodos e contratos com interfaces.
 
 **Parte 1 — Classes e construtores**
-- [parte-1/Pessoa.java](aula-04/parte-1/Pessoa.java) + [Main.java](aula-04/parte-1/Main.java) — criação de objetos com construtor e método de apresentação
+- [parte-1/Pessoa.java](aula-04/parte-1/Pessoa.java) + [Principal.java](aula-04/parte-1/Main.java) — criação de objetos com construtor e método de apresentação
 
 **Parte 2 — Herança**
-- [parte-2/parte-2-1/](aula-04/parte-2/parte-2-1/) — herança com métodos específicos nas subclasses (`Cachorro` com `latir()`, `Gato` com `miar()`)
+- [parte-2/parte-2-1/](aula-04/parte-2/parte-2-1/) — herança com métodos específicos nas subclasses (`Cachorro01` com `latir()`, `Gato01` com `miar()`)
 - [parte-2/parte-2-2/](aula-04/parte-2/parte-2-2/) — sobrescrita de métodos com `@Override` (`emitirSom()` redefinido em cada subclasse)
 
 **Parte 3 — Interfaces**

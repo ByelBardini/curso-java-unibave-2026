@@ -1,3 +1,5 @@
+import java.io.IO;
+
 class Impressora {
 
     void imprimir(String mensagem) {
