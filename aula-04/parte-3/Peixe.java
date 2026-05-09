@@ -1,3 +1,5 @@
+import java.io.IO;
+
 public class Peixe implements Nadavel {
     public String nome;
 

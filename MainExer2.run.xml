@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MainExer2" type="Application" factoryName="Application">
+    <option name="UNNAMED_CLASS_CONFIGURATION" value="true" />
+    <option name="MAIN_CLASS_NAME" value="Main" />
+    <module name="curso-java-unibave-2026" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

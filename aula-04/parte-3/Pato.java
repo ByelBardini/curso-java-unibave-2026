@@ -1,3 +1,5 @@
+import java.io.IO;
+
 public class Pato implements Nadavel, Voavel {
     public String nome;
 

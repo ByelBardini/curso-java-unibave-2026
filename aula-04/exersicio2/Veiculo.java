@@ -8,6 +8,6 @@ public class Veiculo {
     }
 
     public void apresentar(){
-        System.out.println();
+        System.out.println("Marca: " + marca + " | " + "Velocidade Maxima: " + velocidadeMaxima);
     }
 }
