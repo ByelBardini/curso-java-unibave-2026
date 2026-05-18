@@ -80,3 +80,24 @@ Aprofundamento em orientação a objetos: herança entre classes, sobrescrita de
 - Sobrescrita de métodos (`@Override`)
 - Declaração e implementação de interfaces (`interface` / `implements`)
 - Múltiplas interfaces em uma mesma classe
+
+### Aula 05 — Exceções e Listas
+
+Tratamento de erros com exceções e manipulação de coleções com `ArrayList`.
+
+**Parte 1 — Exceções**
+- [Parte-1/Parte-1-1/](aula-05/Parte-1/Parte-1-1/) — exceções unchecked com `IllegalArgumentException` em `ContaBancaria` (depósito, saque com valor inválido e saldo insuficiente)
+- [Parte-1/Parte-1-2/](aula-05/Parte-1/Parte-1-2/) — exceções checked customizadas: `ValorInvalidoException` e `SaldoInsuficienteException` estendendo `Exception`; `ContaBancaria` com múltiplas contas via `Banco`
+
+**Parte 2 — Listas (ArrayList)**
+- [parte-2/Parte-2-1/](aula-05/parte-2/Parte-2-1/) — `List<Pessoa>` com `ArrayList`; iteração com `for-each`
+- [parte-2/Parte-2-2/](aula-05/parte-2/Parte-2-2/) — `List<Produto>` como carrinho simples; cálculo de total e remoção por índice
+- [parte-2/Parte-2-3/](aula-05/parte-2/Parte-2-3/) — encapsulamento da lista em classe `Carrinho` com métodos `adicionar`, `remover`, `calcularTotal` e `tamanho`
+
+**Conceitos abordados:**
+- Exceções unchecked (`RuntimeException` / `IllegalArgumentException`)
+- Exceções checked customizadas (`extends Exception`) com atributos extras
+- `try/catch` e propagação com `throws`
+- `ArrayList` e interface `List<T>`
+- Iteração com `for-each`, acesso por índice, `add`, `remove`, `size`
+- Encapsulamento de coleções em classes de domínio
