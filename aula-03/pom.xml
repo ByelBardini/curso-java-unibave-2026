@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.unibave</groupId>
+        <artifactId>curso-java-unibave</artifactId>
+        <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>aula-03</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>parte-1/parte-1-1</module>
+        <module>parte-1/parte1-2</module>
+        <module>parte-2/parte-2-1</module>
+        <module>parte-2/parte-2-2</module>
+        <module>parte-final/exercicio-1</module>
+        <module>parte-final/exercicio-2</module>
+        <module>parte-final/exercicio-3</module>
+        <module>parte-final/exercicio-4</module>
+        <module>parte-final/exercicio-5</module>
+        <module>parte-final/exercicio-6</module>
+        <module>parte-final/exercicio-7</module>
+        <module>parte-final/exercicio-8</module>
+        <module>parte-final/exercicio-9</module>
+        <module>parte-final/exercicio-10</module>
+    </modules>
+</project>
