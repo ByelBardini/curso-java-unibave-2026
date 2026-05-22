@@ -52,7 +52,7 @@ int sub = subtrair(20, 8);
 exibirResultado("20 - 8", sub);
 
 double pot = calcularPotencia(2, 10);
-exibirResultado("2^10", pot);
+exibirResultado("2^10", pot);  
 ```
 
 ---
