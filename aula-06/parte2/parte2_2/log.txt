@@ -1,0 +1,2 @@
+Primeira linha do log
+Segunda linha do log
