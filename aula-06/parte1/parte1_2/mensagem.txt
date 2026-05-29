@@ -1,0 +1,3 @@
+Olá, mundo!
+Este é um arquivo criado em Java.
+Cada item da lista vira uma linha no arquivo.
