@@ -1,6 +1,5 @@
 package aula_06.parte_final.ex_2.parte_2_1;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,14 +10,14 @@ public class Main {
 
     // Lê o arquivo e converte cada linha em um objeto Contato
     List<Contato> carregar(Path arquivo) {
-        List<Contato> contatos = new ArrayList<>();
+        var contatos = new ArrayList<Contato>();
         // Se o arquivo não existir, retorna lista vazia (primeira execução)
         if (!Files.exists(arquivo)) return contatos;
 
         try {
-            for (String linha : Files.readAllLines(arquivo)) {
+            for (var linha : Files.readAllLines(arquivo)) {
                 if (linha.isBlank()) continue;
-                String[] partes = linha.split(";");
+                var partes = linha.split(";");
                 // Ignora linhas com formato inválido (não têm exatamente 3 partes)
                 if (partes.length != 3) continue;
                 contatos.add(new Contato(partes[0], partes[1], partes[2]));
@@ -29,12 +28,15 @@ public class Main {
         return contatos;
     }
 
-    // Grava a lista inteira no arquivo, sobrescrevendo o conteúdo anterior
+    // Grava a lista inteira no arquivo, sobrescrevendo o conteúdo anterior.
+    // Files.write recebe a lista de linhas e cuida de fechar o arquivo sozinho.
     void salvar(Path arquivo, List<Contato> contatos) {
-        try (FileWriter writer = new FileWriter(arquivo.toFile())) {
-            for (Contato c : contatos) {
-                writer.write(c.paraLinha() + "\n");
-            }
+        var linhas = new ArrayList<String>();
+        for (var c : contatos) {
+            linhas.add(c.paraLinha());
+        }
+        try {
+            Files.write(arquivo, linhas);
         } catch (IOException e) {
             IO.println("Erro ao salvar agenda: " + e.getMessage());
         }
@@ -42,7 +44,7 @@ public class Main {
 
     // Busca por nome ignorando maiúsculas/minúsculas; retorna null se não encontrar
     Contato buscar(List<Contato> contatos, String nome) {
-        for (Contato c : contatos) {
+        for (var c : contatos) {
             if (c.getNome().equalsIgnoreCase(nome)) return c;
         }
         return null;
@@ -54,10 +56,10 @@ public class Main {
     }
 
     void main() {
-        Path arquivo = Path.of("agenda.txt");
+        var arquivo = Path.of("agenda.txt");
 
         // 1. Carrega a agenda do arquivo (começa vazia se não existir)
-        List<Contato> agenda = carregar(arquivo);
+        var agenda = carregar(arquivo);
         IO.println("Agenda carregada: " + agenda.size() + " contato(s).\n");
 
         // 2. Cadastra 3 novos contatos na lista em memória
@@ -67,13 +69,13 @@ public class Main {
 
         // 3. Lista todos os contatos
         IO.println("=== Contatos ===");
-        for (Contato c : agenda) {
+        for (var c : agenda) {
             IO.println(c.getNome() + " | " + c.getTelefone() + " | " + c.getEmail());
         }
 
         // 4. Busca um contato pelo nome (case-insensitive)
         IO.println("\nBuscando 'bruno costa'...");
-        Contato encontrado = buscar(agenda, "bruno costa");
+        var encontrado = buscar(agenda, "bruno costa");
         if (encontrado != null) {
             IO.println("Encontrado: " + encontrado.getNome() + " | " + encontrado.getTelefone() + " | " + encontrado.getEmail());
         } else {
