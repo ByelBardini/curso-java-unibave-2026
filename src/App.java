@@ -54,10 +54,12 @@ public class App {
                 return;
             }
             System.out.print("Nota 1 (0-10): ");
-            double n1 = Double.parseDouble(sc.nextLine().trim());
+            String s1 = sc.nextLine().trim().replace(',','.');
+            double n1 = Double.parseDouble(s1);
             if (n1 < 0 || n1 > 10) { System.out.println("Erro: nota inválida."); return; }
             System.out.print("Nota 2 (0-10): ");
-            double n2 = Double.parseDouble(sc.nextLine().trim());
+            String s2 = sc.nextLine().trim().replace(',','.');
+            double n2 = Double.parseDouble(s2);
             if (n2 < 0 || n2 > 10) { System.out.println("Erro: nota inválida."); return; }
 
             Aluno a = new Aluno(nome, mat, n1, n2);
