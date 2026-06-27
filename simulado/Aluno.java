@@ -57,6 +57,7 @@ public class Aluno {
                 "\nMatrícula: " + matricula +
                 "\nNota 1: " + nota1 +
                 "\nNota 2: " + nota2 +
-                "\nMédia: " + getMedia();
+                "\nMédia: " + getMedia() +
+                "\nSituação: " + (aprovado() ? "Aprovado" : "Reprovado");
     }
 }

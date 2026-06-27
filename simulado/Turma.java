@@ -1,10 +1,27 @@
 import java.util.ArrayList;
 public class Turma {
+
     private ArrayList<Aluno> alunos = new ArrayList<>();
 
-    public void cadastrar(Aluno aluno) {
+    public Turma() {
+        alunos = Persistencia.carregar();
+    }
+
+    public boolean matriculaExiste(String matricula) {
+        for (Aluno aluno : alunos) {
+            if (aluno.getMatricula().equalsIgnoreCase(matricula)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean cadastrar(Aluno aluno) {
+        if (matriculaExiste(aluno.getMatricula())) {
+            return false;
+        }
         alunos.add(aluno);
-        System.out.println("Aluno cadastrado com sucesso!");
+        Persistencia.salvar(alunos);
+        return true;
     }
     public void listar() {
         if (alunos.isEmpty()) {
@@ -18,9 +35,7 @@ public class Turma {
         }
     }
     public Aluno buscar(String nome) {
-
         for (Aluno aluno : alunos) {
-
             if (aluno.getNome().equalsIgnoreCase(nome)) {
                 return aluno;
             }
@@ -30,14 +45,15 @@ public class Turma {
         return null;
     }
     public boolean remover(String nome) {
-
         Aluno aluno = buscar(nome);
-
         if (aluno != null) {
             alunos.remove(aluno);
+            Persistencia.salvar(alunos);
             return true;
         }
 
         return false;
     }
+
+
 }

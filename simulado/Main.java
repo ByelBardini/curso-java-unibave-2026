@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Turma turma = new Turma();
 
-        int opcao;
+        int opcao = -1;
         do {
             System.out.println("\n===== MENU =====");
             System.out.println("1 - Cadastrar aluno");
@@ -14,6 +14,13 @@ public class Main {
             System.out.println("4 - Remover aluno");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
+
+            if (!sc.hasNextInt()) {
+                System.out.println("Opção inválida.");
+                sc.nextLine();
+                continue;
+            }
+
             opcao = sc.nextInt();
             sc.nextLine();
 
@@ -29,13 +36,29 @@ public class Main {
                     }
 
                     System.out.print("Matrícula: ");
-                    String matricula = sc.nextLine();
+                    String matricula = sc.nextLine().trim();
+
+                    if (matricula.isBlank()) {
+                        System.out.println("Erro: a matrícula não pode estar vazia.");
+                        break;
+                    }
 
                     System.out.print("Nota 1: ");
+                    if (!sc.hasNextDouble()) {
+                        System.out.println("Erro: digite um número válido.");
+                        sc.nextLine();
+                        break;
+                    }
                     double nota1 = sc.nextDouble();
 
                     System.out.print("Nota 2: ");
+                    if (!sc.hasNextDouble()) {
+                        System.out.println("Erro: digite um número válido.");
+                        sc.nextLine();
+                        break;
+                    }
                     double nota2 = sc.nextDouble();
+
                     if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10) {
                         System.out.println("Erro: as notas devem estar entre 0 e 10.");
                         break;
@@ -43,7 +66,11 @@ public class Main {
 
                     sc.nextLine();
                     Aluno aluno = new Aluno(nome, matricula, nota1, nota2);
-                    turma.cadastrar(aluno);
+                    if (turma.cadastrar(aluno)) {
+                        System.out.println("Aluno cadastrado com sucesso!");
+                    } else {
+                        System.out.println("Já existe um aluno com essa matrícula.");
+                    }
                     break;
 
                 case 2:
@@ -52,7 +79,7 @@ public class Main {
 
                 case 3:
                     System.out.print("Digite o nome: ");
-                    nome = sc.nextLine();
+                    nome = sc.nextLine().trim();
                     Aluno encontrado = turma.buscar(nome);
 
                     if (encontrado != null) {
@@ -82,5 +109,6 @@ public class Main {
 
             }
         } while (opcao != 0);
+        sc.close();
     }
 }
