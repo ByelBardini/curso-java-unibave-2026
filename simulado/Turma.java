@@ -31,9 +31,9 @@ public class Turma {
         alunos.sort((a1, a2) ->
                 Double.compare(a2.getMedia(), a1.getMedia()));
         for (Aluno aluno : alunos) {
-
+            System.out.println("\n================================================");
             System.out.println(aluno);
-            System.out.println("----------------------");
+            System.out.println("================================================\n");
         }
     }
     public Aluno buscar(String nome) {
