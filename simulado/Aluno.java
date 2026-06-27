@@ -57,7 +57,7 @@ public class Aluno {
                 "\nMatrícula: " + matricula +
                 "\nNota 1: " + nota1 +
                 "\nNota 2: " + nota2 +
-                "\nMédia: " + getMedia() +
+                "\nMédia: " + String.format("%.2f", getMedia()) +
                 "\nSituação: " + (aprovado() ? "Aprovado" : "Reprovado");
     }
 }

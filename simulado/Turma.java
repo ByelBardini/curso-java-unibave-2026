@@ -28,8 +28,10 @@ public class Turma {
             System.out.println("Nenhum aluno cadastrado.");
             return;
         }
-
+        alunos.sort((a1, a2) ->
+                Double.compare(a2.getMedia(), a1.getMedia()));
         for (Aluno aluno : alunos) {
+
             System.out.println(aluno);
             System.out.println("----------------------");
         }
@@ -54,6 +56,35 @@ public class Turma {
 
         return false;
     }
+    public void estatisticas() {
+        if (alunos.isEmpty()) {
+        System.out.println("Nenhum aluno cadastrado.");
+        return;
+    }
+        int aprovados = 0;
+        int reprovados = 0;
 
+        double maiorMedia = alunos.get(0).getMedia();
+        double menorMedia = alunos.get(0).getMedia();
+        for (Aluno aluno : alunos) {
+            if (aluno.aprovado()) {
+                aprovados++;
+            } else {
+                reprovados++;
+            }
+            if (aluno.getMedia() > maiorMedia) {
+                maiorMedia = aluno.getMedia();
+            }
+            if (aluno.getMedia() < menorMedia) {
+                menorMedia = aluno.getMedia();
+            }
+        }
+        System.out.println("\n===== ESTATÍSTICAS =====");
+        System.out.println("Total de alunos: " + alunos.size());
+        System.out.println("Aprovados: " + aprovados);
+        System.out.println("Reprovados: " + reprovados);
+        System.out.println("Maior média: " + String.format("%.2f", maiorMedia));
+        System.out.println("Menor média: " + String.format("%.2f", menorMedia));
+    }
 
 }

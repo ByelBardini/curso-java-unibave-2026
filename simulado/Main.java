@@ -12,6 +12,7 @@ public class Main {
             System.out.println("2 - Listar alunos");
             System.out.println("3 - Buscar aluno");
             System.out.println("4 - Remover aluno");
+            System.out.println("5 - Estatísticas");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
 
@@ -91,13 +92,17 @@ public class Main {
 
                 case 4:
                     System.out.print("Nome do aluno: ");
-                    nome = sc.nextLine();
+                    nome = sc.nextLine().trim();
 
                     if (turma.remover(nome)) {
                         System.out.println("Aluno removido.");
                     } else {
                         System.out.println("Aluno não encontrado.");
                     }
+                    break;
+
+                case 5:
+                    turma.estatisticas();
                     break;
 
                 case 0:

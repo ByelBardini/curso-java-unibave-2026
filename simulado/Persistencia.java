@@ -6,8 +6,6 @@ public class Persistencia {
 
     public static void salvar(ArrayList<Aluno> alunos) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO))) {
-            alunos.sort((a1, a2) ->
-                    Double.compare(a2.getMedia(), a1.getMedia()));
             for (Aluno aluno : alunos) {
                 writer.write(
                         aluno.getNome() + ";" +
