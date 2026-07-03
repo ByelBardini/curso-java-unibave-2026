@@ -51,11 +51,14 @@ public abstract class ItemBiblioteca implements Emprestavel {
         totalEmprestimos++;
     }
     @Override
-    public void devolver() {
+    public void devolver() throws ItemIndisponivelException {
+
+        if (!isEmprestado()) {
+            throw new ItemIndisponivelException("Este item não está emprestado.");
+        }
 
         emprestado = false;
         responsavel = null;
-
     }
     public abstract String getTipo();
 
