@@ -1,64 +1,13 @@
-import java.util.Scanner;
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+void main() {
+  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+  // to see how IntelliJ IDEA suggests fixing it.
+  IO.println(String.format("Hello and welcome!"));
 
-public class Main {
-
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        Turma turma = new Turma();
-
-        int opcao;
-
-        do {
-
-            System.out.println("\n=== MENU ===");
-            System.out.println("1 - Listar alunos");
-            System.out.println("2 - Buscar aluno");
-            System.out.println("3 - Remover aluno");
-            System.out.println("0 - Sair");
-
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcao) {
-
-                case 1:
-
-                    turma.listarAlunos();
-                    break;
-
-                case 2:
-
-                    System.out.print("Digite o nome: ");
-                    String nomeBusca = scanner.nextLine();
-
-                    Aluno aluno = turma.buscarAluno(nomeBusca);
-
-                    if (aluno != null) {
-                        System.out.println(aluno);
-                    } else {
-                        System.out.println("Aluno não encontrado.");
-                    }
-
-                    break;
-
-                case 3:
-
-                    System.out.print("Digite o nome: ");
-                    String nomeRemover = scanner.nextLine();
-
-                    if (turma.removerAluno(nomeRemover)) {
-                        System.out.println("Aluno removido.");
-                    } else {
-                        System.out.println("Aluno não encontrado.");
-                    }
-
-                    break;
-
-            }
-
-        } while (opcao != 0);
-
-        scanner.close();
-    }
+  for (int i = 1; i <= 5; i++) {
+    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
+    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+    IO.println("i = " + i);
+  }
 }
