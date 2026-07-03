@@ -1,3 +1,5 @@
+package simulado;
+
 public class Aluno {
     private String nome;
     private String matricula;

@@ -1,3 +1,5 @@
+package simulado;
+
 import java.io.*;
 import java.util.ArrayList;
 public class Persistencia {
