@@ -1,3 +1,5 @@
+package projeto.src;
+
 import java.io.Serializable;
 
 public class Aluno implements Serializable {
