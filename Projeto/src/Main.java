@@ -1,3 +1,5 @@
+package Projeto.src;
+
 public class Main {
 
     static void main() {
