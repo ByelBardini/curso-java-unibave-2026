@@ -7,219 +7,122 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
 
-        int opcao;
+        int op;
 
         do {
-            System.out.println("\n===== BIBLIOTECA =====");
-            System.out.println("1 - Cadastrar Livro");
-            System.out.println("2 - Cadastrar Revista");
-            System.out.println("3 - Listar acervo");
-            System.out.println("4 - Emprestar item");
-            System.out.println("5 - Devolver item");
-            System.out.println("6 - Remover item");
-            System.out.println("7 - Resumo do acervo");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha: ");
 
-            if (!sc.hasNextInt()) {
-                System.out.println("Opção inválida.");
-                sc.nextLine();
-                continue;
-            }
+            System.out.println("\n1 livro");
+            System.out.println("2 revista");
+            System.out.println("3 listar tudo");
+            System.out.println("4 listar livros");
+            System.out.println("5 listar revistas");
+            System.out.println("6 emprestar");
+            System.out.println("7 devolver");
+            System.out.println("8 remover");
+            System.out.println("9 resumo");
+            System.out.println("10 buscar autor");
+            System.out.println("11 buscar editora");
+            System.out.println("0 sair");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            op = lerInt(sc, "opcao: ");
 
-            switch (opcao) {
+            switch (op) {
 
                 case 1 -> {
+                    System.out.print("titulo: ");
+                    String t = sc.nextLine();
+                    System.out.print("autor: ");
+                    String a = sc.nextLine();
+                    System.out.print("isbn: ");
+                    String i = sc.nextLine();
+                    int an = lerInt(sc, "ano: ");
 
-                    System.out.println("\n=== CADASTRAR LIVRO ===");
-
-                    System.out.print("Título: ");
-                    String titulo = sc.nextLine().trim();
-
-                    if (titulo.isBlank()) {
-                        System.out.println("Erro: título não pode ser vazio.");
-                        break;
-                    }
-
-                    System.out.print("Autor: ");
-                    String autor = sc.nextLine().trim();
-
-                    if (autor.isBlank()) {
-                        System.out.println("Erro: autor não pode ser vazio.");
-                        break;
-                    }
-
-                    System.out.print("ISBN: ");
-                    String isbn = sc.nextLine().trim();
-
-                    if (isbn.isBlank()) {
-                        System.out.println("Erro: ISBN não pode ser vazio.");
-                        break;
-                    }
-
-                    System.out.print("Ano: ");
-
-                    if (!sc.hasNextInt()) {
-                        System.out.println("Erro: ano inválido.");
-                        sc.nextLine();
-                        break;
-                    }
-
-                    int ano = sc.nextInt();
-                    sc.nextLine();
-
-                    Livro livro = new Livro(titulo, autor, isbn, ano);
-
-                    boolean sucesso = biblioteca.cadastrar(livro);
-
-                    if (sucesso) {
-                        System.out.println("Livro cadastrado com sucesso!");
-                    } else {
-                        System.out.println("Já existe um item com esse título.");
-                    }
+                    System.out.println(
+                            biblioteca.cadastrar(new Livro(t, a, i, an))
+                                    ? "cadastrado"
+                                    : "ja existe"
+                    );
                 }
 
                 case 2 -> {
+                    System.out.print("titulo: ");
+                    String t = sc.nextLine();
+                    System.out.print("editora: ");
+                    String e = sc.nextLine();
+                    int ed = lerInt(sc, "edicao: ");
+                    int an = lerInt(sc, "ano: ");
 
-                    System.out.println("\n=== CADASTRAR REVISTA ===");
-
-                    System.out.print("Título: ");
-                    String titulo = sc.nextLine().trim();
-
-                    if (titulo.isBlank()) {
-                        System.out.println("Erro: título não pode ser vazio.");
-                        break;
-                    }
-
-                    System.out.print("Editora: ");
-                    String editora = sc.nextLine().trim();
-
-                    if (editora.isBlank()) {
-                        System.out.println("Erro: editora não pode ser vazia.");
-                        break;
-                    }
-
-                    System.out.print("Número da edição: ");
-
-                    if (!sc.hasNextInt()) {
-                        System.out.println("Erro: número da edição inválido.");
-                        sc.nextLine();
-                        break;
-                    }
-
-                    int numeroEdicao = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Ano: ");
-
-                    if (!sc.hasNextInt()) {
-                        System.out.println("Erro: ano inválido.");
-                        sc.nextLine();
-                        break;
-                    }
-
-                    int ano = sc.nextInt();
-                    sc.nextLine();
-
-                    Revista revista = new Revista(titulo, editora, numeroEdicao, ano);
-
-                    boolean sucesso = biblioteca.cadastrar(revista);
-
-                    if (sucesso) {
-                        System.out.println("Revista cadastrada com sucesso!");
-                    } else {
-                        System.out.println("Já existe um item com esse título.");
-                    }
+                    System.out.println(
+                            biblioteca.cadastrar(new Revista(t, e, ed, an))
+                                    ? "cadastrado"
+                                    : "ja existe"
+                    );
                 }
 
                 case 3 -> biblioteca.listar();
+                case 4 -> biblioteca.listarLivros();
+                case 5 -> biblioteca.listarRevistas();
 
-                case 4 -> {
-
-                    System.out.println("\n=== EMPRESTAR ITEM ===");
-
-                    System.out.print("Título do item: ");
-                    String titulo = sc.nextLine().trim();
-
-                    if (titulo.isBlank()) {
-                        System.out.println("Erro: título não pode ser vazio.");
-                        break;
-                    }
-
-                    System.out.print("Nome do responsável: ");
-                    String responsavel = sc.nextLine().trim();
-
-                    if (responsavel.isBlank()) {
-                        System.out.println("Erro: nome do responsável não pode ser vazio.");
-                        break;
-                    }
-
-                    try {
-                        biblioteca.emprestar(titulo, responsavel);
-                        System.out.println("Empréstimo realizado com sucesso!");
-                    }
-                    catch (ItemNaoEncontradoException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    catch (ItemIndisponivelException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    catch (LimiteEmprestimosException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-
-                case 5 -> {
-
-                    System.out.println("\n=== DEVOLVER ITEM ===");
-
-                    System.out.print("Título do item: ");
-                    String titulo = sc.nextLine().trim();
-
-                    if (titulo.isBlank()) {
-                        System.out.println("Erro: título não pode ser vazio.");
-                        break;
-                    }
-
-                    try {
-                        biblioteca.devolver(titulo);
-                        System.out.println("Devolução realizada com sucesso!");
-                    }
-                    catch (ItemNaoEncontradoException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
                 case 6 -> {
+                    System.out.print("titulo: ");
+                    String t = sc.nextLine();
+                    System.out.print("responsavel: ");
+                    String r = sc.nextLine();
 
-                    System.out.println("\n=== REMOVER ITEM ===");
-
-                    System.out.print("Título do item: ");
-                    String titulo = sc.nextLine().trim();
-
-                    if (titulo.isBlank()) {
-                        System.out.println("Erro: título não pode ser vazio.");
-                        break;
-                    }
-
-                    boolean removido = biblioteca.remover(titulo);
-
-                    if (removido) {
-                        System.out.println("Item removido com sucesso!");
-                    } else {
-                        System.out.println("Item não encontrado.");
+                    try {
+                        biblioteca.emprestar(t, r);
+                        System.out.println("ok");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
                 }
-                case 7 -> biblioteca.resumo();
-                case 0 -> System.out.println("Encerrando...");
 
-                default -> System.out.println("Opção inválida.");
+                case 7 -> {
+                    System.out.print("titulo: ");
+                    String t = sc.nextLine();
+
+                    try {
+                        biblioteca.devolver(t);
+                        System.out.println("ok");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+
+                case 8 -> {
+                    System.out.print("titulo: ");
+                    String t = sc.nextLine();
+                    System.out.println(biblioteca.remover(t) ? "removido" : "nao achou");
+                }
+
+                case 9 -> biblioteca.resumo();
+
+                case 10 -> {
+                    System.out.print("autor: ");
+                    biblioteca.buscarPorAutor(sc.nextLine());
+                }
+
+                case 11 -> {
+                    System.out.print("editora: ");
+                    biblioteca.buscarPorEditora(sc.nextLine());
+                }
             }
 
-        } while (opcao != 0);
+        } while (op != 0);
 
         sc.close();
+    }
+
+    private static int lerInt(Scanner sc, String msg) {
+
+        while (true) {
+            System.out.print(msg);
+
+            try {
+                return Integer.parseInt(sc.nextLine());
+            } catch (Exception e) {
+                System.out.println("valor invalido");
+            }
+        }
     }
 }
