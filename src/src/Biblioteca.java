@@ -1,106 +1,149 @@
 import java.util.ArrayList;
 
 public class Biblioteca {
-    private ArrayList<ItemBiblioteca> acervo = new ArrayList<>();
+
+    private ArrayList<ItemBiblioteca> acervo;
+
     public Biblioteca() {
-        acervo = Persistencia.carregar();
+        acervo = new ArrayList<>(Persistencia.carregar());
     }
-    public boolean tituloExiste(String titulo) {
-        for (ItemBiblioteca item : acervo) {
-            if (item.getTitulo().equalsIgnoreCase(titulo)) {
-                return true;
+
+    public boolean cadastrar(ItemBiblioteca item) {
+
+        for (ItemBiblioteca i : acervo) {
+            if (i.getTitulo().equalsIgnoreCase(item.getTitulo())) {
+                return false;
             }
         }
-        return false;
-    }
-    public boolean cadastrar(ItemBiblioteca item) {
-        if (tituloExiste(item.getTitulo())) {
-            return false;
-        }
+
         acervo.add(item);
         Persistencia.salvar(acervo);
         return true;
     }
-    public void listar() {
-        if (acervo.isEmpty()) {
-            System.out.println("Acervo vazio.");
-            return;
-        }
-        for (ItemBiblioteca item : acervo) {
-            System.out.println("====================");
-            System.out.println(item);
-            System.out.println("====================");
-        }
-    }
+
     public ItemBiblioteca buscar(String titulo) {
-        for (ItemBiblioteca item : acervo) {
-            if (item.getTitulo().equalsIgnoreCase(titulo)) {
-                return item;
+
+        for (ItemBiblioteca i : acervo) {
+            if (i.getTitulo().equalsIgnoreCase(titulo)) {
+                return i;
             }
         }
         return null;
     }
-    public void emprestar(String titulo, String responsavel)
-            throws ItemNaoEncontradoException,
-            ItemIndisponivelException,
-            LimiteEmprestimosException {
+
+    public void emprestar(String titulo, String resp)
+            throws ItemNaoEncontradoException, ItemIndisponivelException, LimiteEmprestimosException {
+
         ItemBiblioteca item = buscar(titulo);
+
         if (item == null) {
-            throw new ItemNaoEncontradoException("Item não encontrado no acervo.");
+            throw new ItemNaoEncontradoException("item nao encontrado");
         }
-        int quantidade = 0;
+
+        int qtd = 0;
+
         for (ItemBiblioteca i : acervo) {
             if (i.isEmprestado()
-                    && responsavel.equalsIgnoreCase(i.getResponsavel())) {
-                quantidade++;
+                    && i.getResponsavel() != null
+                    && i.getResponsavel().equalsIgnoreCase(resp)) {
+                qtd++;
             }
         }
-        if (quantidade >= 2) {
-            throw new LimiteEmprestimosException(
-                    "Essa pessoa já possui 2 itens emprestados."
-            );
+
+        if (qtd >= 2) {
+            throw new LimiteEmprestimosException("limite de 2 itens atingido");
         }
-        item.emprestar(responsavel);
+
+        item.emprestar(resp);
         Persistencia.salvar(acervo);
     }
+
     public void devolver(String titulo)
-            throws ItemNaoEncontradoException {
+            throws ItemNaoEncontradoException, ItemIndisponivelException {
+
         ItemBiblioteca item = buscar(titulo);
+
         if (item == null) {
-            throw new ItemNaoEncontradoException("Item não encontrado no acervo.");
+            throw new ItemNaoEncontradoException("item nao encontrado");
         }
+
         item.devolver();
         Persistencia.salvar(acervo);
     }
+
     public boolean remover(String titulo) {
+
         ItemBiblioteca item = buscar(titulo);
-        if (item == null) {
-            return false;
-        }
+
+        if (item == null) return false;
+
         acervo.remove(item);
         Persistencia.salvar(acervo);
         return true;
     }
+
+    public void listar() {
+        for (ItemBiblioteca i : acervo) {
+            System.out.println(i);
+            System.out.println("-----");
+        }
+    }
+
+    public void listarLivros() {
+        for (ItemBiblioteca i : acervo) {
+            if (i instanceof Livro) {
+                System.out.println(i);
+                System.out.println("-----");
+            }
+        }
+    }
+
+    public void listarRevistas() {
+        for (ItemBiblioteca i : acervo) {
+            if (i instanceof Revista) {
+                System.out.println(i);
+                System.out.println("-----");
+            }
+        }
+    }
+
+    public void buscarPorAutor(String autor) {
+        for (ItemBiblioteca i : acervo) {
+            if (i instanceof Livro l) {
+                if (l.getAutor().equalsIgnoreCase(autor)) {
+                    System.out.println(l);
+                }
+            }
+        }
+    }
+
+    public void buscarPorEditora(String editora) {
+        for (ItemBiblioteca i : acervo) {
+            if (i instanceof Revista r) {
+                if (r.getEditora().equalsIgnoreCase(editora)) {
+                    System.out.println(r);
+                }
+            }
+        }
+    }
+
     public void resumo() {
 
-        int livros = 0;
-        int revistas = 0;
-        int disponiveis = 0;
-        int emprestados = 0;
+        int l = 0, r = 0, d = 0, e = 0;
 
-        for (ItemBiblioteca item : acervo) {
+        for (ItemBiblioteca i : acervo) {
 
-            if (item.getTipo().equalsIgnoreCase("Livro")) livros++;
-            else revistas++;
+            if (i instanceof Livro) l++;
+            else r++;
 
-            if (item.isEmprestado()) emprestados++;
-            else disponiveis++;
+            if (i.isEmprestado()) e++;
+            else d++;
         }
 
-        System.out.println("\n===== RESUMO =====");
-        System.out.println("Total: " + acervo.size());
-        System.out.println("Livros: " + livros);
-        System.out.println("Revistas: " + revistas);
-        System.out.println("Disponíveis: " + disponiveis);
-        System.out.println("Emprestados: " + emprestados);
+        System.out.println("total: " + acervo.size());
+        System.out.println("livros: " + l);
+        System.out.println("revistas: " + r);
+        System.out.println("disponiveis: " + d);
+        System.out.println("emprestados: " + e);
+    }
 }
