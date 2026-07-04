@@ -1,7 +1,5 @@
 public class ItemIndisponivelException extends Exception {
-
-    public ItemIndisponivelException(String mensagem) {
-        super(mensagem);
+    public ItemIndisponivelException(String msg) {
+        super(msg);
     }
-
 }
