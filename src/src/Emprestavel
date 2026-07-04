@@ -1,0 +1,9 @@
+public interface Emprestavel {
+
+    void emprestar(String pessoa)
+            throws ItemIndisponivelException;
+
+    void devolver();
+
+    boolean isEmprestado();
+}
