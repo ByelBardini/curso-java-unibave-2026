@@ -9,13 +9,8 @@ public class Livro extends ItemBiblioteca {
         this.isbn = isbn;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
+    public String getAutor() { return autor; }
+    public String getIsbn() { return isbn; }
 
     @Override
     public String getTipo() {
@@ -24,12 +19,10 @@ public class Livro extends ItemBiblioteca {
 
     @Override
     public String toString() {
-        return "Tipo: Livro" +
-                "\nTítulo: " + getTitulo() +
-                "\nAutor: " + autor +
-                "\nISBN: " + isbn +
-                "\nAno: " + getAno() +
-                "\nStatus: " + (isEmprestado() ? "Emprestado" : "Disponível") +
-                (isEmprestado() ? "\nResponsável: " + getResponsavel() : "");
+        return "Livro: " + getTitulo() +
+                " | autor: " + autor +
+                " | ano: " + getAno() +
+                " | status: " + (isEmprestado() ? "emprestado" : "livre") +
+                " | emprestimos: " + getTotalEmprestimos();
     }
 }

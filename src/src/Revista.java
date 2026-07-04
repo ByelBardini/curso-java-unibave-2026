@@ -9,13 +9,8 @@ public class Revista extends ItemBiblioteca {
         this.numeroEdicao = numeroEdicao;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
-    public int getNumeroEdicao() {
-        return numeroEdicao;
-    }
+    public String getEditora() { return editora; }
+    public int getNumeroEdicao() { return numeroEdicao; }
 
     @Override
     public String getTipo() {
@@ -24,12 +19,11 @@ public class Revista extends ItemBiblioteca {
 
     @Override
     public String toString() {
-        return "Tipo: Revista" +
-                "\nTítulo: " + getTitulo() +
-                "\nEditora: " + editora +
-                "\nEdição: " + numeroEdicao +
-                "\nAno: " + getAno() +
-                "\nStatus: " + (isEmprestado() ? "Emprestado" : "Disponível") +
-                (isEmprestado() ? "\nResponsável: " + getResponsavel() : "");
+        return "Revista: " + getTitulo() +
+                " | editora: " + editora +
+                " | edicao: " + numeroEdicao +
+                " | ano: " + getAno() +
+                " | status: " + (isEmprestado() ? "emprestado" : "livre") +
+                " | emprestimos: " + getTotalEmprestimos();
     }
 }
