@@ -1,152 +1,118 @@
-# Curso Java - Unibave 2026
+# Trabalho Final
 
-Repositório com os exercícios e exemplos desenvolvidos durante o curso de Java da Unibave.
+## Informações
 
-## Professores
+- *Tempo limite:* 3 horas
+- A partir do repositório do curso, crie sua branch seguindo o padrão: `final-[nome-sobrenome]`
+- Faça commits ao longo do desenvolvimento — **não deixe tudo para um único commit no final**
 
-| Nome | GitHub |
-|------|--------|
-| Victor Oliveira Rodrigues | [<img src="https://github.com/favicon.ico" width="16"/> victolirodrigues](https://github.com/victolirodrigues) |
-| Gabryel Bagio Bardini | [<img src="https://github.com/favicon.ico" width="16"/> ByelBardini](https://github.com/ByelBardini) |
+---
 
-## Conteúdo
+## Objetivo
 
-### Aula 01 — [PrimeiraAula.java](aula-01/PrimeiraAula.java)
+Desenvolver um sistema de linha de comando para controle do acervo e empréstimos de uma biblioteca que gerencia **dois tipos de itens diferentes** e mantém todos os dados persistidos em arquivo.
 
-Introdução ao Java com leitura de dados via terminal e lógica de compra com validações.
+---
 
-**Conceitos abordados:**
-- Entrada de dados com `Scanner`
-- Tipos primitivos: `int`, `double`, `boolean`, `String`
-- Operadores aritméticos e lógicos
-- Estruturas condicionais (`if/else`)
-- Laço de repetição (`for`)
+## Implementações Base
 
-### Aula 02 — Métodos em Java
+### Estrutura do acervo
 
-Criação e chamada de métodos sem e com parâmetros, sobrecarga, e separação em classes.
+A biblioteca possui dois tipos de itens:
 
-**Parte 1 — Métodos sem parâmetros**
-- [Parte-1-1/Metodos.java](aula-02/parte-1/Parte-1-1/Metodos.java) — métodos na mesma unnamed class
-- [Parte-1-2/Metodos.java](aula-02/parte-1/Parte-1-2/Metodos.java) + [Calculadora.java](aula-02/parte-1/Parte-1-2/Calculadora.java) — métodos em classe separada
+- **Livro:** título, autor, ISBN, ano de publicação
+- **Revista:** título, editora, número da edição, ano da edição
 
-**Parte 2 — Métodos com parâmetros**
-- [Parte-2-1/Metodos.java](aula-02/parte-2/Parte-2-1/Metodos.java) — métodos parametrizados na mesma classe
-- [Parte-2-2/Metodos.java](aula-02/parte-2/Parte-2-2/Metodos.java) + [CalculadoraParametrizada.java](aula-02/parte-2/Parte-2-2/CalculadoraParametrizada.java) + [Impressora.java](aula-02/parte-2/Parte-2-2/Impressora.java) — métodos parametrizados em classes separadas
+Ambos compartilham comportamentos em comum: podem ser *emprestados*, *devolvidos* e *consultados*.
 
-**Conceitos abordados:**
-- Declaração e chamada de métodos (`void` e com retorno)
-- Parâmetros e argumentos
-- Sobrecarga de métodos (overloading)
-- Separação de responsabilidades em classes
-- `Math.PI`, `Math.random()`, `java.time.LocalDate`
+Crie uma *classe base* para representar um item da biblioteca e *duas subclasses*, uma para cada tipo.
+Crie também uma *interface* para representar a capacidade de ser emprestado, *implementada pela classe base*.
+O sistema deve gerenciar livros e revistas em uma *única coleção polimórfica*.
 
-### Aula 03 — Orientação a Objetos
+---
 
-Introdução à programação orientada a objetos: criação de classes, objetos, passagem por referência e encapsulamento.
+### Cadastro e listagem
+- Cadastrar *livros* e *revistas* com seus dados específicos
+- Listar todos os itens do acervo com *tipo*, *título* e *status* (disponível ou emprestado)
+- Campos inválidos devem exibir *mensagem de erro sem encerrar o programa*
 
-**Parte 1 — Objetos e Métodos (sem get/set)**
-- [Parte-1-1/Pessoa.java](aula-03/parte-1/Parte-1-1/Pessoa.java) + [Main.java](aula-03/parte-1/Parte-1-1/Main.java) — passagem de objetos e primitivos para métodos; referência vs. valor
-- [Parte1-2/ContaBancaria.java](aula-03/parte-1/Parte1-2/ContaBancaria.java) + [Main.java](aula-03/parte-1/Parte1-2/Main.java) — métodos que recebem objetos e chamam comportamentos; transferência entre objetos
+---
 
-**Parte 2 — Encapsulamento com get/set**
-- [Parte-2-1/Produto.java](aula-03/Parte-2/Parte-2-1/Produto.java) + [Main.java](aula-03/Parte-2/Parte-2-1/Main.java) — campos `private` com getters e setters simples
-- [Parte-2-2/Funcionario.java](aula-03/Parte-2/Parte-2-2/Funcionario.java) + [Main.java](aula-03/Parte-2/Parte-2-2/Main.java) — setters com validação; proteção do estado do objeto
+### Controle de empréstimos
+- Emprestar um item pelo título — *impedir o empréstimo* caso já esteja emprestado
+- Registrar o *nome de quem retirou* no momento do empréstimo
+- Devolver um item pelo título
+- Uma mesma pessoa *não pode ter mais de 2 itens emprestados simultaneamente*
+- Erros de operação (*item não encontrado*, *item indisponível*, *limite atingido*) devem ser tratados com *exceções próprias*
 
-**Conceitos abordados:**
-- Classes e objetos
-- Campos públicos vs. privados
-- Passagem de objetos por referência e primitivos por valor
-- Getters e setters
-- Encapsulamento e validação de dados nos setters
+---
 
-### Aula 04 — Herança e Interfaces
+### Remoção e persistência
+- Remover um item do acervo pelo título
+- Os dados de *todos os itens* devem ser *mantidos entre execuções*, incluindo tipo, status de empréstimo e nome do responsável
 
-Aprofundamento em orientação a objetos: herança entre classes, sobrescrita de métodos e contratos com interfaces.
+---
 
-**Parte 1 — Classes e construtores**
-- [parte-1/Pessoa.java](aula-04/parte-1/Pessoa.java) + [Main.java](aula-04/parte-1/Main.java) — criação de objetos com construtor e método de apresentação
+## Implementações Extras *(do mais simples ao mais complexo)*
 
-**Parte 2 — Herança**
-- [parte-2/parte-2-1/](aula-04/parte-2/parte-2-1/) — herança com métodos específicos nas subclasses (`Cachorro` com `latir()`, `Gato` com `miar()`)
-- [parte-2/parte-2-2/](aula-04/parte-2/parte-2-2/) — sobrescrita de métodos com `@Override` (`emitirSom()` redefinido em cada subclasse)
+### Resumo do acervo
+- Exibir total de itens, quantos estão disponíveis e emprestados, e quantos são livros vs revistas
 
-**Parte 3 — Interfaces**
-- [parte-3/](aula-04/parte-3/) — interfaces `Nadavel` e `Voavel`; `Pato` implementa ambas, `Peixe` implementa apenas `Nadavel`
+---
 
-**Conceitos abordados:**
-- Herança com `extends` e `super()`
-- Métodos específicos de subclasses
-- Sobrescrita de métodos (`@Override`)
-- Declaração e implementação de interfaces (`interface` / `implements`)
-- Múltiplas interfaces em uma mesma classe
+### Filtro por tipo
+- Listar apenas os *livros* ou apenas as *revistas* do acervo
 
-### Aula 05 — Exceções e Listas
+---
 
-Tratamento de erros com exceções e manipulação de coleções com `ArrayList`.
+### Busca por atributo específico
+- Buscar livros pelo *autor*
+- Buscar revistas pela *editora*
 
-**Parte 1 — Exceções**
-- [Parte-1/Parte-1-1/](aula-05/Parte-1/Parte-1-1/) — exceções unchecked com `IllegalArgumentException` em `ContaBancaria` (depósito, saque com valor inválido e saldo insuficiente)
-- [Parte-1/Parte-1-2/](aula-05/Parte-1/Parte-1-2/) — exceções checked customizadas: `ValorInvalidoException` e `SaldoInsuficienteException` estendendo `Exception`; `ContaBancaria` com múltiplas contas via `Banco`
+---
 
-**Parte 2 — Listas (ArrayList)**
-- [parte-2/Parte-2-1/](aula-05/parte-2/Parte-2-1/) — `List<Pessoa>` com `ArrayList`; iteração com `for-each`
-- [parte-2/Parte-2-2/](aula-05/parte-2/Parte-2-2/) — `List<Produto>` como carrinho simples; cálculo de total e remoção por índice
-- [parte-2/Parte-2-3/](aula-05/parte-2/Parte-2-3/) — encapsulamento da lista em classe `Carrinho` com métodos `adicionar`, `remover`, `calcularTotal` e `tamanho`
+### Histórico de empréstimos
+- Registrar e exibir *quantas vezes cada item foi emprestado* desde o cadastro
+- A contagem deve ser *persistida no arquivo*
 
-**Conceitos abordados:**
-- Exceções unchecked (`RuntimeException` / `IllegalArgumentException`)
-- Exceções checked customizadas (`extends Exception`) com atributos extras
-- `try/catch` e propagação com `throws`
-- `ArrayList` e interface `List<T>`
-- Iteração com `for-each`, acesso por índice, `add`, `remove`, `size`
-- Encapsulamento de coleções em classes de domínio
+---
 
-### Aula 06 — Arquivos e Persistência Simples
+## Critérios de Avaliação
 
-Leitura e escrita de arquivos texto, conversão de objetos em linhas e CRUD persistido em disco. Cada subparte é um módulo Maven independente (`mvn exec:java`), com `Main.java` como ponto de entrada. Os `.txt` ficam na raiz da aula, então as subpartes leem o que as anteriores gravaram.
+### Implementações Base
+- Cumprimento correto de todos os requisitos obrigatórios
 
-**Parte 1 — Escrita e leitura básica**
-- [parte1/parte1_1/](aula-06/parte1/parte1_1/) — escreve `mensagem.txt` com `Files.write` recebendo uma `List<String>`
-- [parte1/parte1_2/](aula-06/parte1/parte1_2/) — lê `mensagem.txt` com `Files.readAllLines` e imprime linha a linha
+---
 
-**Parte 2 — Sobrescrever vs adicionar no final**
-- [parte2/parte2_1/](aula-06/parte2/parte2_1/) — sobrescreve `log.txt` com `new FileWriter("...")`
-- [parte2/parte2_2/](aula-06/parte2/parte2_2/) — adiciona linhas no final com `new FileWriter("...", true)` (append)
-- [parte2/parte2_3/](aula-06/parte2/parte2_3/) — lê `log.txt` para comparar o resultado das duas anteriores
+### Organização do Código
+- Código limpo, indentado e bem estruturado
+- Separação em classes com responsabilidades definidas — *não coloque tudo no `main`*
+- Uso correto de *herança*, *interface*, *polimorfismo* e *exceções checked*
 
-**Parte 3 — Salvando um objeto como texto**
-- [parte3/parte3_1/](aula-06/parte3/parte3_1/) — `Conta` com `paraLinha()` que serializa para `titular;saldo` e grava em `conta.txt`
-- [parte3/parte3_2/](aula-06/parte3/parte3_2/) — lê `conta.txt`, faz `split(";")` e reconstrói o objeto `Conta`
+---
 
-**Parte 4 — Salvando uma lista de contas**
-- [parte4/parte4_1/](aula-06/parte4/parte4_1/) — grava uma `List<Conta>` em `contas.txt`, uma conta por linha
-- [parte4/parte4_2/](aula-06/parte4/parte4_2/) — lê `contas.txt` e reconstrói a `List<Conta>` no `main`
+### Lógica e Funcionamento
+- Livros e revistas gerenciados na *mesma coleção* e persistidos no *mesmo arquivo*
+- Empréstimos, devoluções, limite por pessoa e persistência funcionando corretamente
+- Exceções lançadas e tratadas corretamente
+- Nenhum crash por entrada inválida
 
-**Parte 5 — Carregar ao iniciar**
-- [parte5/](aula-06/parte5/) — `Files.exists` para decidir entre carregar ou começar com lista vazia; cadastra uma nova conta e regrava tudo
+---
 
-**Parte 6 — Buscar**
-- [parte6/](aula-06/parte6/) — carrega a lista e procura pelo titular com `equalsIgnoreCase`
+### Boas Práticas de Git
+- *Commits com mensagens claras e descritivas*
+- Histórico progressivo refletindo a evolução do desenvolvimento (ex: interface → classe base → subclasses → gerenciador → menu)
+- Branch nomeada corretamente: `final-[nome-sobrenome]`
 
-**Parte 7 — Editar**
-- [parte7/](aula-06/parte7/) — altera o saldo de uma conta encontrada e reescreve `contas.txt` inteiro
+---
 
-**Parte 8 — Remover**
-- [parte8/](aula-06/parte8/) — remove uma conta da lista em memória e regrava o arquivo do zero
+### Implementações Extras
+- Recursos adicionais implementados além do mínimo exigido
 
-**Parte 9 — Validação simples**
-- [parte9/](aula-06/parte9/) — ignora linhas vazias, valida o número de campos por `split` e captura `NumberFormatException` em saldo inválido
+---
 
-**Conceitos abordados:**
-- Leitura/escrita de arquivos com `Files.write`, `Files.readAllLines`, `Files.readString` e `FileWriter`
-- Sobrescrever vs append (segundo parâmetro do `FileWriter`)
-- Conversão objeto ↔ linha com `split(";")` e `Double.parseDouble`
-- Persistência de `List<T>` linha a linha em arquivo texto
-- Carregamento condicional ao iniciar (`Files.exists`)
-- Padrão CRUD em memória + reescrita completa do arquivo
-- Validação defensiva de dados lidos (`isBlank`, tamanho do `split`, `NumberFormatException`)
-- `try-with-resources` para fechar `FileWriter` automaticamente
-- Maven multi-módulo: pom-pai com `<modules>` e poms-filhos herdando configuração
-- `exec-maven-plugin` para rodar `Main` via `mvn exec:java`
-- Java 26: `void main()` (instance main) e `IO.println()` em classes nomeadas (JEP 512, `java.lang.IO`)
+## Entrega
+
+1. Certifique-se de que todo o código está na branch `final-[nome-sobrenome]`
+2. Faça o **push** da sua branch ao fim do desenvolvimento
+3. Entregue dentro do prazo de **3 horas**
